@@ -1,0 +1,8 @@
+instalar o node
+https://nodejs.org/en
+Eu estou usando a versão 18.16.0
+
+criar o projeto
+npm init -y
+node modele
+npm install express

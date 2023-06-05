@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
 router.get('/login', (req, res) => {
   res.render('login');
 });
+router.get('/cadastro', (req, res) => {
+  res.render('cadastro');
+});
 
 //Fota de da Home
 router.get('/home', (req, res) => {

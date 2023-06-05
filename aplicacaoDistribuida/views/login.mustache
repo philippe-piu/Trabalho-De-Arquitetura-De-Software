@@ -8,10 +8,36 @@
 
     <!-- Conteúdo Da Pagina -->
     <main>
-        
+      <div class="login">
+        <h1>Login</h1>
+      </div>
+      <div class="container">
+        <div class="forBloco">
+          <form>
+            <label>Email</label><br />
+            <input
+              class="input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Insira o seu e-mail"
+            /><br />
+            <label>Senha</label><br />
+            <input
+              class="input"
+              id="senha"
+              type="password"
+              name="senha"
+            /><br />
+            <div class="meuCenter">
+              <input class="input" id="botao" type="submit" value="Login" />
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
 
     <!-- Rodapé -->
-    {{>footer}}
+    <footer class="footerLogin">{{>footer}}</footer>
   </body>
 </html>

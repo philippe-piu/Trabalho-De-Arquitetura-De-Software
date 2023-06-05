@@ -1,1 +1,44 @@
-<h1>Teste Trabalho de Arquitetura</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Head -->
+  {{>head}}
+  <body class="background">
+    <!-- Cabeçalho -->
+    {{>header}}
+
+    <!-- Conteúdo Da Pagina -->
+    <main>
+        <div class="titulo">
+          <h1>Produto</h1>
+        </div>
+      <div class="container">
+        <div class="bloco">
+          <div class="nome">
+            <h2>Turbo Compressor</h2>
+          </div>
+          <div class="imgTurbo">
+            <img src="/images/turbo.PNG" alt="Logo Turbo" />
+          </div>
+          <div class="info">
+            <p>Maxpeedingrods Turbocompressor para Nissan, Turbina, Skyline, R32, R33, R34, RB20, RB20DET, RB25DET, 0.63A, R</p>
+          </div>
+        </div>
+        <div class="sidebar">
+          <div class="txtInfo">
+            <h1>Informação do Produto</h1>
+            <p>A Maxpeedingrods apresenta o turbocompressor perfeito para os amantes do Nissan Skyline R32, R33 e R34 equipados com os motores RB20DET e RB25DET. Com uma turbina de geometria precisa e uma relação A/R de 0.63, este turbocompressor oferece uma resposta rápida do acelerador, aumentando significativamente a potência e o desempenho desses icônicos modelos da Nissan.</p>
+          </div>
+          <div class="quantidade">
+            <p>Quantidade em Estoque: 10 peças</p>
+          </div>
+          <div class="button">
+            <button class="comprar">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    {{>footer}}
+  </body>
+</html>

@@ -6,12 +6,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //Importes de rotas
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
 
 //Cria uma instância express
 var app = express();
 
+//nodemailer
 //Configuração de Templates
 //Importa e instancia o mustache
 const mustacheExpress = require("mustache-express");
@@ -29,10 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //Definição da rota de acesso
 app.use('/', indexRouter);
-//Definição da rota users
-app.use('/users', usersRouter);
 
 //Exporta o express para os outros arquivos do projeto
 module.exports = app;

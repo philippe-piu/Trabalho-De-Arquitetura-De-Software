@@ -46,6 +46,14 @@ input::placeholder{
   font-size: 12px;
 }
 
+form [type="submit"]{
+  display: block;
+  background-color: #FFFFFF ;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+
 .bloco h1{
   color: white;
   display: flex;

@@ -1,0 +1,36 @@
+<!--Input---->
+<form id="pedidoForm" method="post" >
+  <input
+    type="text"
+    id="clienteNome"
+    name="clienteNome"
+    placeholder="Nome EX: Luffy"
+    autofocus
+    required
+  />
+  <input
+    type="text"
+    id="itemNome"
+    name="itemNome"
+    placeholder="Nome Item EX: Carne"
+    required
+  />
+  <input
+    type="number"
+    id="itemPreco"
+    name="itemPreco"
+    min="0"
+    step="0.01"
+    placeholder="Preço do Item EX: 10"
+    required
+  />
+  <input
+    type="number"
+    id="itemQuantidade"
+    name="itemQuantidade"
+    min="1"
+    placeholder="Quantidade EX: 1"
+    required
+  />
+  <input class="input" type="submit" value="Criar Pedido" />
+</form>

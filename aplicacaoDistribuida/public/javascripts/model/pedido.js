@@ -1,9 +1,8 @@
 //Classe Pedido
 class Pedido {
-  constructor(cliente) {
-    this.cliente = cliente;
-    this.itens = [];
+  constructor(cliente, itens) {
+    this.cliente = cliente
   }
 }
 
-module.exports = Pedido;
+module.exports = Pedido

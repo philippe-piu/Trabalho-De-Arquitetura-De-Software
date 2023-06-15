@@ -1,4 +1,4 @@
-//Classe Produto
+//Classe do Produto
 class Produto {
   constructor(nome, preco) {
     this.nome = nome;

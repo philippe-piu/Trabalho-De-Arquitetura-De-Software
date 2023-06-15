@@ -1,2 +1,13 @@
+//Criação de estrutura do projeto express
 npx express-generator
 
+//Instalação de dependências
+npm install
+
+//Para fazer alterações e não precisar ficar reiniciando o servidor com npm start instale o nodemon
+npm install --save-dev nodemon
+
+//Instalação do Mustache
+npm install mustache-express
+  
+"dev": "nodemon -e js,mustache ./server.js"

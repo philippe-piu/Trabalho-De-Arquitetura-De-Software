@@ -30,7 +30,7 @@ document
     };
 
     //API REST
-    /*rever
+    /*rever toda essa parte
     fetch('', {
       method: 'POST',
       headers: {
@@ -46,5 +46,5 @@ document
     .catch(error => {
       console.error('Erro:', error);
     });
-*/
+  */
   });

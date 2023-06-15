@@ -3,7 +3,7 @@ const Pedido = require('../model/pedido');
 const Cliente = require('../model/cliente');
 const ItemPedido = require('../model/itemPedido');
 const Produto = require('../model/produto');
-//Rever tudo
+//Rever tuda essa parte
 
 // Função para criar um novo pedido
 function criarPedido(req, res) {

@@ -12,9 +12,39 @@ document
       document.getElementById('itemQuantidade').value
     )
 
-    //Mensagem no console para verificar em um teste se está pegando as informações do passadas do oformulario
+    //Mensagem no console para verificar em um teste se está pegando as informações do passadas do pelo formulario
     console.log('Cliente:', clienteNome)
     console.log('Produto:', itemNome)
     console.log('Preço:', itemPreco)
     console.log('Quantidade:', itemQuantidade)
+
+    //cria um objeto que Capitura Informações do formulario e o armazena essas informações
+    const pedidoData = {
+      clienteNome: clienteNome,
+      //Definindo um array com as informações do pedido
+      itens: [{
+        nome: itemNome,
+        preco: itemPreco,
+        quantidade: itemQuantidade
+      }]
+    };
+
+    //API REST
+    /*rever
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pedidoData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+      document.getElementById('pedidoForm').reset();
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+    });
+*/
   });

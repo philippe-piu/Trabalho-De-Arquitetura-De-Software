@@ -1,5 +1,6 @@
+npm init
 //Criação de estrutura do projeto express
-npx express-generator
+npx install express
 
 //Instalação de dependências
 npm install

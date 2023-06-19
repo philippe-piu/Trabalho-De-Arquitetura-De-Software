@@ -1,36 +1,48 @@
-// importação da biblioteca jQuery
-const $ = require('jquery');
-
-// Remova o document.ready e substitua por uma função exportada
 function handleCompraFormSubmit() {
-  $('#pedidoForm').submit(function (event) {
+  const pedidoForm = document.getElementById('pedidoForm');
+
+  pedidoForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    // Pega os Valores do formulário
-    const clienteId = $('#clienteId').val();
-    const clienteNome = $('#clienteNome').val();
-    const produtoId = $('#produtoId').val();
-    const itemNome = $('#itemNome').val();
-    const itemPreco = $('#itemPreco').val();
-    const quantidade = $('#itemQuantidade').val();
+    // Pega os valores do formulário
+    const clienteId = document.getElementById('clienteId').value;
+    const clienteNome = document.getElementById('clienteNome').value;
+    const produtoId = document.getElementById('produtoId').value;
+    const itemNome = document.getElementById('itemNome').value;
+    const itemPreco = document.getElementById('itemPreco').value;
+    const itemQuantidade = document.getElementById('itemQuantidade').value;
 
     // Cria um objeto com os itens passados pelo formulário
-    const data = { clienteId, clienteNome, produtoId, itemNome, itemPreco, quantidade };
+    const data = { clienteId, clienteNome, produtoId, itemNome, itemPreco, itemQuantidade };
+
+    console.log('Dados do formulário:', data);
+
+    // Configuração da requisição
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
 
     // Envie a requisição para o servidor
-    $.ajax({
-      type: 'POST',
-      url: '/pedidos',
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      success: function (response) {
-        alert('Compra realizada com sucesso');
-        window.location.replace('/pedidos/' + response.id);
-      },
-      error: function (error) {
-        alert('Erro ao realizar a compra: ' + error.responseJSON.message);
-      },
-    });
+    fetch('/pedidos', requestOptions)
+      .then(response => {
+        if (response.ok) {
+          const mensagem = 'Compra realizada com sucesso';
+          const successMessage = document.createElement('div');
+          successMessage.classList.add('success-message');
+          successMessage.textContent = mensagem;
+          pedidoForm.innerHTML = '';
+          pedidoForm.appendChild(successMessage);
+        } else {
+          throw new Error('Erro ao realizar a compra');
+        }
+      })
+      .catch(error => {
+        alert('Erro ao realizar a compra: ' + error.message);
+      });
   });
 }
 

@@ -26,7 +26,7 @@ class PedidoController {
 
     pedidos.push(pedido);
 
-    res.status(201).json(pedido);
+    res.redirect('/pedidoDetalhe');
   }
 
   // Atualiza um pedido existente

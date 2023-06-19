@@ -6,15 +6,27 @@
       <section class="confSection">
         <div class="bloco">
           <h1>Detalhe do Pedido</h1>
-            <p>Pedido ID:<span id="pedidoId"></span></p>
-            <p>Cliente: <span id="cliente"></span></p>
-            <p>Produtos:</p>
-            <ul id="produtos"></ul>
-            <p>Total: R$ <span id="total"></span></p>
-            <input id="editarBtn" class="input" type="submit" value="Editar Pedido" />
-            <input id="excluirBtn" class="input" type="submit" value="Excluir Pedido" />
+          <p>Cliente ID: {{ clienteId }}</p>
+          <p>Cliente Nome: {{ clienteNome }}</p>
+          <p>Produto ID: {{ produtoId }}</p>
+          <p>Item Nome: {{ itemNome }}</p>
+          <p>Item Preço: {{ itemPreco }}</p>
+          <p>Item Quantidade: {{ itemQuantidade }}</p>
+          <p>Total: R$ <span id="total"></span></p>
+          <input
+            id="editarBtn"
+            class="input"
+            type="submit"
+            value="Editar Pedido"
+          />
+          <input
+            id="excluirBtn"
+            class="input"
+            type="submit"
+            value="Excluir Pedido"
+          />
         </div>
-        <script src="/controller/detalheController.js"></script> 
+        <script src="/controller/detalheController.js"></script>
       </section>
     </body>
   </html>

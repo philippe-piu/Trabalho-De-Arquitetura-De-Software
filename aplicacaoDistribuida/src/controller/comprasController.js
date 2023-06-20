@@ -13,7 +13,22 @@ function handleCompraFormSubmit() {
     const itemQuantidade = document.getElementById('itemQuantidade').value;
 
     // Cria um objeto com os itens passados pelo formulário
-    const data = { clienteId, clienteNome, produtoId, itemNome, itemPreco, itemQuantidade };
+    const data = {
+      cliente: {
+        id: clienteId,
+        nome: clienteNome
+      },
+      itens: [
+        {
+          produto: {
+            id: produtoId,
+            nome: itemNome,
+            preco: itemPreco
+          },
+          quantidade: itemQuantidade
+        }
+      ]
+    };
 
     console.log('Dados do formulário:', data);
 
@@ -28,24 +43,24 @@ function handleCompraFormSubmit() {
 
     // Envie a requisição para o servidor
     fetch('/pedidos', requestOptions)
-      .then(response => {
-        if (response.ok) {
-          const mensagem = 'Compra realizada com sucesso';
-          const successMessage = document.createElement('div');
-          successMessage.classList.add('success-message');
-          successMessage.textContent = mensagem;
-          pedidoForm.innerHTML = '';
-          pedidoForm.appendChild(successMessage);
-        } else {
-          throw new Error('Erro ao realizar a compra');
-        }
-      })
-      .catch(error => {
-        alert('Erro ao realizar a compra: ' + error.message);
-      });
+  .then(response => {
+    if (response.ok) {
+      const mensagem = 'Compra realizada com sucesso';
+      const successMessage = document.createElement('div');
+      successMessage.classList.add('success-message');
+      successMessage.textContent = mensagem;
+      pedidoForm.innerHTML = '';
+      pedidoForm.appendChild(successMessage);
+
+      
+      window.location.href = '/pedidoDetalhe';
+    } else {
+      throw new Error('Erro ao realizar a compra');
+    }
+  })
+  .catch(error => {
+    alert('Erro ao realizar a compra: ' + error.message);
   });
 }
 
-module.exports = {
-  handleCompraFormSubmit,
-};
+handleCompraFormSubmit();

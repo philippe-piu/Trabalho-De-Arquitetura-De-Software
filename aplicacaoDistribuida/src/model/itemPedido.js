@@ -10,4 +10,5 @@ class ItemPedido {
   }
 }
 
-module.exports = ItemPedido
+module.exports = ItemPedido;
+

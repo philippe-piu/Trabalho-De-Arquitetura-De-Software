@@ -25,8 +25,24 @@ app.get('/', (req, res) => {
 
 // Rota Pedido Detalhe
 app.get('/pedidoDetalhe', (req, res) => {
+
   res.render('pedidoDetalhe');
 });
+
+
+app.get('/pedidoDetalhe/:pedidoId', (req, res) => {
+  const pedidoId = req.params.pedidoId;
+  const pedido = pedidos.find((p) => p.id === parseInt(pedidoId));
+
+  if (!pedido) {
+    res.status(404).send('Pedido não encontrado');
+    return;
+  }
+
+  res.render('pedidoDetalhe', { pedido });
+});
+
+
 
 //REST
 app.get('/pedidos', PedidoController.getAllPedidos);

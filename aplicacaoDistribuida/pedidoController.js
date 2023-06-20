@@ -4,6 +4,7 @@ const Cliente = require('./src/model/cliente.js');
 const ItemPedido = require('./src/model/itemPedido.js');
 const Produto = require('./src/model/produto.js');
 
+
 // Armazenamento de pedidos temporário
 let pedidos = [];
 
@@ -25,6 +26,8 @@ class PedidoController {
     const pedido = new Pedido(pedidos.length + 1, cliente, [itemPedido]);
 
     pedidos.push(pedido);
+
+    console.log('Novo pedido:', pedido);
 
     res.redirect('/pedidoDetalhe');
   }

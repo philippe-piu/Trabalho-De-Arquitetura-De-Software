@@ -1,7 +1,7 @@
 function handleDetalhePage() {
-  const pedidoId = window.location.pathname.split('/').pop();
+  const pedidoId = window.location.href.split('/').pop();
 
-  // Faz uma requisição GET para o servidor
+  // Faz uma requisição GET para o servidor para buscar o pedido feito
   fetch(`/pedidos/${pedidoId}`)
     .then(response => {
       if (response.ok) {

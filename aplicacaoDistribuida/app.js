@@ -3,6 +3,8 @@ const mustacheExpress = require('mustache-express');
 const path = require('path');
 
 const PedidoController = require('./pedidoController');
+const { handleDetalhePage } = require('./src/controller/detalheController');
+
 
 const app = express();
 const port = 3000;
@@ -24,14 +26,9 @@ app.get('/', (req, res) => {
 });
 
 // Rota Pedido Detalhe
-app.get('/pedidoDetalhe', (req, res) => {
-
-  res.render('pedidoDetalhe');
-});
-
-
 app.get('/pedidoDetalhe/:pedidoId', (req, res) => {
   const pedidoId = req.params.pedidoId;
+  const pedidos = PedidoController.getAllPedidos();
   const pedido = pedidos.find((p) => p.id === parseInt(pedidoId));
 
   if (!pedido) {
@@ -43,9 +40,12 @@ app.get('/pedidoDetalhe/:pedidoId', (req, res) => {
 });
 
 
-
 //REST
-app.get('/pedidos', PedidoController.getAllPedidos);
+// Rota para obter todos os pedidos
+app.get('/pedidos', (req, res) => {
+  PedidoController.getAllPedidos(req, res);
+});
+
 app.post('/pedidos', PedidoController.createPedido);
 app.put('/pedidos/:pedidoId', PedidoController.updatePedido);
 app.delete('/pedidos/:pedidoId', PedidoController.deletePedido);

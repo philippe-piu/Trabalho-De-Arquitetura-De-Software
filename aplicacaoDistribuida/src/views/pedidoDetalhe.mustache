@@ -6,14 +6,14 @@
       <div class="bloco">
         <h1>Detalhe do Pedido</h1>
         <script src="./src/controller/detalheController.js"></script>
-        <p>Cliente ID: {{cliente.id}}</p>
-        <p>Cliente Nome: {{cliente.nome}}</p>
+        <p>Cliente ID: {{pedido.cliente.id}}</p>
+        <p>Cliente Nome: {{pedido.cliente.nome}}</p>
         <ul>
-          {{#itens}}
+          {{#pedido.itens}}
           <li>{{produto.nome}} - Quantidade: {{quantidade}}</li>
-          {{/itens}}
+          {{/pedido.itens}}
         </ul>
-        <p>Total: R$ <span id="total">{{total}}</span></p>
+        <p>Total: R$ <span id="total">{{pedido.total}}</span></p>
         <input
           id="editarBtn"
           class="input"

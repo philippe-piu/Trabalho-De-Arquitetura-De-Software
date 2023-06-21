@@ -1,10 +1,13 @@
 function handleCompraFormSubmit() {
+  //Capituro a referencioa do formulario preenchido
   const pedidoForm = document.getElementById('pedidoForm');
 
+  //Criu um evento para o formulario
   pedidoForm.addEventListener('submit', function (event) {
+    //Permite eu fazer um evento do meu jeito
     event.preventDefault();
 
-    // Pega os valores do formulário
+    // Pega os valores passados no formulário
     const clienteId = document.getElementById('clienteId').value;
     const clienteNome = document.getElementById('clienteNome').value;
     const produtoId = document.getElementById('produtoId').value;
@@ -30,8 +33,6 @@ function handleCompraFormSubmit() {
       ]
     };
 
-    console.log('Dados do formulário:', data);
-
     // Configuração da requisição
     const requestOptions = {
       method: 'POST',
@@ -54,10 +55,12 @@ function handleCompraFormSubmit() {
 
       window.location.href = '/pedidoDetalhe';
     } else {
+      //Se ocorre algum erro no preenchimento do formulario
       throw new Error('Erro ao realizar a compra');
     }
   })
   .catch(error => {
+    //Erros durante a requisição
     alert('Erro ao realizar a compra: ' + error.message);
   });
 }

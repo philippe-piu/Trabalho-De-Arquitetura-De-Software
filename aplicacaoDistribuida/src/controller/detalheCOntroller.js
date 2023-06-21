@@ -24,9 +24,11 @@ function handleDetalhePage() {
       document.getElementById('total').textContent = pedido.total;
 
       document.getElementById('editarBtn').addEventListener('click', function () {
+        //Era para direcionar para pagina de edição de pedidos no momento não funciona
         window.location.href = `/pedidos/${pedido.id}/editar`;
       });
 
+      //Exclusão de itens no momneto não funciona
       document.getElementById('excluirBtn').addEventListener('click', function (event) {
         if (confirm('Tem certeza de que deseja excluir este pedido?')) {
           // Faz uma requisição DELETE para o servidor

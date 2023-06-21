@@ -7,6 +7,16 @@ const Produto = require('./src/model/produto.js')
 // Armazenamento de pedidos temporário
 let pedidos = []
 
+function verificarExistenciaCliente(clienteId, clienteNome) {
+  // Verifica se o cliente existe
+  return new Cliente(clienteId, clienteNome)
+}
+
+function verificarExistenciaProduto(produtoId, itemNome, itemPreco) {
+  // Verifica se o produto existe
+  return new Produto(produtoId, itemNome, itemPreco)
+}
+
 class PedidoController {
   // Retorna todos os pedidos
   static getAllPedidos() {
@@ -24,16 +34,18 @@ class PedidoController {
     } = req.body
 
     // Verifica se o cliente e o produto existem
-    const cliente = new Cliente(clienteId, clienteNome)
-    const produto = new Produto(produtoId, itemNome, itemPreco)
+    const cliente = verificarExistenciaCliente(clienteId, clienteNome)
+    const produto = verificarExistenciaProduto(produtoId, itemNome, itemPreco)
 
     const itemPedido = new ItemPedido(produto, itemQuantidade)
     const pedido = new Pedido(pedidos.length + 1, cliente, [itemPedido])
 
     pedidos.push(pedido)
 
+    //Pequena verificação para ver se os pedidos foram criados pelo o console
     console.log('Novo pedido:', pedido)
 
+    //Redirecionado para pagina pedidoDetalhe
     res.redirect(`/pedidoDetalhe/${pedido.id}`)
   }
 
@@ -57,8 +69,8 @@ class PedidoController {
     }
 
     // Verifica se o cliente e o produto existem
-    const cliente = new Cliente(clienteId, clienteNome)
-    const produto = new Produto(produtoId, itemNome, itemPreco)
+    const cliente = verificarExistenciaCliente(clienteId, clienteNome)
+    const produto = verificarExistenciaProduto(produtoId, itemNome, itemPreco)
 
     const itemPedido = new ItemPedido(produto, quantidade)
     pedido.cliente = cliente
@@ -71,9 +83,8 @@ class PedidoController {
   static deletePedido(req, res) {
     const { pedidoId } = req.params
 
-    // Verifica se o pedido existe
-    const pedidoIndex = pedidos.findIndex(p => p.id === parseInt(pedidoId))
-    if (pedidoIndex === -1) {
+    // Verifica se o pedido existe pelo ID
+    if (!pedido) {
       res.status(404).json({ message: 'Pedido não encontrado' })
       return
     }
@@ -81,6 +92,7 @@ class PedidoController {
     // Remove o pedido do array de pedidos
     pedidos.splice(pedidoIndex, 1)
 
+    //Mensagem no console para verificar se o pedido foi excluido
     console.log('Pedido excluído:', pedidoId)
 
     res.sendStatus(204)

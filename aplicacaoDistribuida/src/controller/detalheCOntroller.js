@@ -27,7 +27,7 @@ function handleDetalhePage() {
         window.location.href = `/pedidos/${pedido.id}/editar`;
       });
 
-      document.getElementById('excluirBtn').addEventListener('click', function () {
+      document.getElementById('excluirBtn').addEventListener('click', function (event) {
         if (confirm('Tem certeza de que deseja excluir este pedido?')) {
           // Faz uma requisição DELETE para o servidor
           fetch(`/pedidos/${pedido.id}`, { method: 'DELETE' })
@@ -53,3 +53,8 @@ function handleDetalhePage() {
 module.exports = {
   handleDetalhePage,
 };
+
+
+
+
+

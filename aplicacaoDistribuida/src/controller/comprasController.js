@@ -52,7 +52,6 @@ function handleCompraFormSubmit() {
       pedidoForm.innerHTML = '';
       pedidoForm.appendChild(successMessage);
 
-      
       window.location.href = '/pedidoDetalhe';
     } else {
       throw new Error('Erro ao realizar a compra');

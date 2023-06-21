@@ -39,17 +39,25 @@ app.get('/pedidoDetalhe/:pedidoId', (req, res) => {
   res.render('pedidoDetalhe', { pedido });
 });
 
+// Rota Pedido Detalhe Excluir
+app.delete('/pedidoDetalhe/:pedidoId', (req, res) => {
+  const pedidoId = req.params.pedidoId;
+  const pedido = PedidoController.getPedidoById(pedidoId);
+
+  if (!pedido) {
+    res.status(404).send('Pedido não encontrado');
+    return;
+  }
+
+  PedidoController.deletePedido(pedidoId);
+  res.send('Pedido excluído com sucesso');
+});
 
 //REST
 // Rota para obter todos os pedidos
-app.get('/pedidos', (req, res) => {
-  PedidoController.getAllPedidos(req, res);
-});
-
+app.get('/pedidos',);
 app.post('/pedidos', PedidoController.createPedido);
 app.put('/pedidos/:pedidoId', PedidoController.updatePedido);
-app.delete('/pedidos/:pedidoId', PedidoController.deletePedido);
-
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

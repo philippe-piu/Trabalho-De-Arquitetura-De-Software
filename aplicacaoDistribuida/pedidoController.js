@@ -10,7 +10,7 @@ let pedidos = []
 class PedidoController {
   // Retorna todos os pedidos
   static getAllPedidos() {
-    return pedidos;
+    return pedidos
   }
   // Cria um novo pedido
   static createPedido(req, res) {
@@ -67,20 +67,23 @@ class PedidoController {
     res.json(pedido)
   }
 
-  // Exclui um pedido existente
+  // Excluir um pedido existente
   static deletePedido(req, res) {
     const { pedidoId } = req.params
 
-    const index = pedidos.findIndex(p => p.id === parseInt(pedidoId))
-
-    if (index === -1) {
+    // Verifica se o pedido existe
+    const pedidoIndex = pedidos.findIndex(p => p.id === parseInt(pedidoId))
+    if (pedidoIndex === -1) {
       res.status(404).json({ message: 'Pedido não encontrado' })
       return
     }
 
-    pedidos.splice(index, 1)
+    // Remove o pedido do array de pedidos
+    pedidos.splice(pedidoIndex, 1)
 
-    res.json({ message: 'Pedido excluído com sucesso' })
+    console.log('Pedido excluído:', pedidoId)
+
+    res.sendStatus(204)
   }
 }
 
